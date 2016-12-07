@@ -5,12 +5,16 @@ includes:
 
 services:
   NGINX.nginx:
+    ports:
+      - "2108:80"
     links:
       - fpm:fpm
+    volumes:
+      - /tmp/assets:/srv/assetup/assets # refer to all assets here
 
   fpm:
+    build:
+      context: .
     image: thanhpk/assetup-fpm:0.1
     volumes:
-      - /tmp/assets:/srv/assetup/assets
-
-    
+      - /tmp/assets:/srv/assetup/assets # all the assets upload here

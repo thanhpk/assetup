@@ -5,8 +5,5 @@ includes:
 
 services:
   PROD.fpm:
-    build: 
-      context: .
-    image: thanhpk/assetup-fpm:0.1
     volumes:
-      - /tmp/assets:/srv/assetup/assets
+      - ./src:/srv/assetup
