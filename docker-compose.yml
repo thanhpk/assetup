@@ -1,24 +1,5 @@
-version: '2.0'
+version: '2'
 services:
-  
+    PROD.fpm: {image: 'thanhpk/assetup-fpm:0.1', volumes: ['/tmp/assets:/srv/assetup/assets'], ports: [], build: {context: /home/thanh/workspace/assetup}}
+    PROD.NGINX.nginx: {links: ['PROD.fpm:fpm']}
 
-  nginx:
-    build: deps/nginx/
-    image: thanhpk/nginx:assetup_2
-    ports:
-      - "2108:80"
-
-    volumes:
-      - /var/log:/var/log
-      - /tmp/assets:/srv/assetup/assets
-
-    links:
-      - fpm
-
-  fpm:
-    build: .
-    image: thanhpk/assetup:0.0.2
-    volumes:
-      - /tmp/assets:/srv/assetup/assets
-
-    

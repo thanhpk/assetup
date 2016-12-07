@@ -1,0 +1,7 @@
+version: '2'
+services:  
+  nginx:
+    image: thanhpk/assetup-nginx:0.1
+    volumes:
+      - /var/log:/var/log
+      - /tmp/assets:/srv/assetup/assets

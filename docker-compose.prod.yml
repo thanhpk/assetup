@@ -1,0 +1,16 @@
+version: '2'
+
+includes:
+  NGINX: https://raw.githubusercontent.com/thanhpk/assetup/master/deps/nginx/docker-compose.prod.yml
+
+services:
+  NGINX.nginx:
+    links:
+      - fpm:fpm
+
+  fpm:
+    image: thanhpk/assetup-fpm:0.1
+    volumes:
+      - /tmp/assets:/srv/assetup/assets
+
+    

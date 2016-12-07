@@ -1,0 +1,9 @@
+version: '2'
+includes:
+  PROD: docker-compose.prod.yml
+  
+services:  
+  PROD.nginx:
+    build:
+      context: .
+    image: thanhpk/assetup-nginx:0.1
